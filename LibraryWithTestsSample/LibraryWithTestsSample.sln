@@ -9,10 +9,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLibrary", "src\MyLibrary\
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App", "src\App\App.fsproj", "{982B0EF8-3FAA-43E9-AD20-8CAC56E114F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F86A8FB5-EFC0-418D-ABB6-24B6CC49B51E}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLibraryTests", "test\MyLibraryTests\MyLibraryTests.fsproj", "{EC1A51E1-4F80-443C-B972-FC61F6656355}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,14 +26,9 @@ Global
 		{982B0EF8-3FAA-43E9-AD20-8CAC56E114F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982B0EF8-3FAA-43E9-AD20-8CAC56E114F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982B0EF8-3FAA-43E9-AD20-8CAC56E114F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC1A51E1-4F80-443C-B972-FC61F6656355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC1A51E1-4F80-443C-B972-FC61F6656355}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC1A51E1-4F80-443C-B972-FC61F6656355}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC1A51E1-4F80-443C-B972-FC61F6656355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{65267C7C-0A59-46D9-B253-7EF8C747A982} = {E3B5EDE8-152E-490A-A1A6-56D262AC4CD7}
 		{982B0EF8-3FAA-43E9-AD20-8CAC56E114F2} = {E3B5EDE8-152E-490A-A1A6-56D262AC4CD7}
-		{EC1A51E1-4F80-443C-B972-FC61F6656355} = {F86A8FB5-EFC0-418D-ABB6-24B6CC49B51E}
 	EndGlobalSection
 EndGlobal
