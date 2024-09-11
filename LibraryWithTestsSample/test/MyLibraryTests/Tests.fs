@@ -2,6 +2,8 @@ namespace MyLibraryTests
 
 open System
 open Microsoft.VisualStudio.TestTools.UnitTesting
+open MyLibrary
+
 
 [<TestClass>]
 type TestClass () =

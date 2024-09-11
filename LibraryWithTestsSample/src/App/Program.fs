@@ -1,7 +1,5 @@
 ﻿open System
+open MyLibrary
 
-[<EntryPoint>]
-let main args =
-    printfn "Arguments passed to function : %A" args
-    // Return 0. This indicates success.
-    0
+for i in -10 .. 10 do
+    printfn $"F({i}) = {MyLibrary.Fibonacci.countSlow i}"
