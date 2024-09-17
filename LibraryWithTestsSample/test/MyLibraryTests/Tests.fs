@@ -11,31 +11,31 @@ type TestClass () =
     [<TestMethod>]
     member this.TestFibonacciSlowZero () =
         let actual = MyLibrary.Fibonacci.countSlow (0)
-        let expected = 0
+        let expected = 0I
         Assert.AreEqual(expected, actual)
 
     [<TestMethod>]
     member this.TestFibonacciSlowOne () =
         let actual = MyLibrary.Fibonacci.countSlow (1)
-        let expected = 1
+        let expected = 1I
         Assert.AreEqual(expected, actual)
 
     [<TestMethod>]
     member this.TestFibonacciSlowNegativeOne () =
         let actual = MyLibrary.Fibonacci.countSlow (-1)
-        let expected = -1
+        let expected = -1I
         Assert.AreEqual(expected, actual)
 
     [<TestMethod>]
     member this.TestFibonacciSlowNine () =
         let actual = MyLibrary.Fibonacci.countSlow (9)
-        let expected = 34
+        let expected = 34I
         Assert.AreEqual(expected, actual)
 
     [<TestMethod>]
     member this.TestFibonacciSlowNegativeNine () =
         let actual = MyLibrary.Fibonacci.countSlow (-9)
-        let expected = -34
+        let expected = -34I
         Assert.AreEqual(expected, actual)
 
     [<TestMethod>]

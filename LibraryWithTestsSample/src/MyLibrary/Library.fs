@@ -5,24 +5,24 @@ module Say =
         printfn "Hello %s" name
 
 module Fibonacci =
-    let rec countSlow number =
-        if number >= -1 && number <= 1 then number
+    let rec countSlow (number: int): bigint =
+        if number >= -1 && number <= 1 then bigint(number)
         elif number > 1 then countSlow (number - 1) + countSlow (number - 2)
         else countSlow (number + 2) - countSlow (number + 1) // F(n+2) - F(n+1) = F(n)
 
-    let countMedium number = 
-        if number >= -1 && number <= 1 then number
+    let countMedium (number: int): bigint = 
+        if number >= -1 && number <= 1 then bigint(number)
         else
-            let mutable a = 0
-            let mutable b = sign(number)
-            let mutable temp = 0
-            for i in 2 .. number * sign(number) do
-                temp <- a + b * sign(number)
+            let mutable a = 0I
+            let mutable b = if number < 0 then -1I else 1I
+            let mutable temp = 0I
+            for i in 2 .. abs(number) do
+                temp <- a + b * if number < 0 then -1I else 1I
                 a <- b
                 b <- temp
             b
 
-    let countFast number =
+    let countFast (number: int): bigint =
         let matrixMul (a: bigint[,]) (b: bigint[,]) =
             let c = Array2D.zeroCreate<bigint> 2 2
             c.[0, 0] <- a.[0, 0] * b.[0, 0] + a.[0, 1] * b.[1, 0]
@@ -31,26 +31,27 @@ module Fibonacci =
             c.[1, 1] <- a.[1, 0] * b.[0, 1] + a.[1, 1] * b.[1, 1]
             c
 
-        let mutable n = number
-        let mutable matricsPow2s : bigint[,][] = Array.init 300 (fun _ -> Array2D.zeroCreate<bigint> 2 2)
+        let absNumber = abs number
+
+        let mutable size = 1
+        while 1 <<< size <= absNumber do size <- size + 1
+
+        let mutable matricsPow2s : bigint[,][] = Array.init size (fun _ -> Array2D.zeroCreate<bigint> 2 2)
         matricsPow2s.[0] <- array2D [[1I; 1I]; [1I; 0I]]
-        let mutable pow2 = 1
-        let mutable i = 0
-        let mutable pow2Matrix = array2D [[1I; 1I]; [1I; 0I]]
-        while pow2 * 2 <= n do
-            pow2 <- pow2 * 2
+        let mutable i = 1
+        while 1 <<< i <= absNumber do
+            matricsPow2s.[i] <- matrixMul matricsPow2s.[i - 1] matricsPow2s.[i - 1]
             i <- i + 1
-            pow2Matrix <- matrixMul pow2Matrix pow2Matrix
-            matricsPow2s.[i] <- pow2Matrix
-        
+
         let mutable resultMatrix = array2D [[1I; 0I]; [0I; 1I]]
         let mutable i = 0
+        let mutable n = absNumber
         while n > 0 do
             resultMatrix <- if n % 2 = 1 then matrixMul resultMatrix matricsPow2s.[i] else resultMatrix
             i <- i + 1
-            n <- n / 2
+            n <- n >>> 1
 
-        resultMatrix.[0, 1]
+        resultMatrix.[0, 1] * if number < 0 && absNumber % 2 = 1 then -1I else 1I
 
 
 module Factorial =
