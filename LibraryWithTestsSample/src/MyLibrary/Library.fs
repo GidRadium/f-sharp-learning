@@ -11,12 +11,12 @@ module Fibonacci =
         else countSlow (number + 2) - countSlow (number + 1) // F(n+2) - F(n+1) = F(n)
 
     let countMedium (number: int): bigint = 
-        if number >= -1 && number <= 1 then bigint(number)
+        if number >= -1 && number <= 1 then bigint number
         else
             let mutable a = 0I
             let mutable b = if number < 0 then -1I else 1I
             let mutable temp = 0I
-            for i in 2 .. abs(number) do
+            for i in 2 .. abs number do
                 temp <- a + b * if number < 0 then -1I else 1I
                 a <- b
                 b <- temp
@@ -35,9 +35,9 @@ module Fibonacci =
 
         let mutable size = 1
         while 1 <<< size <= absNumber do size <- size + 1
-
         let mutable matricsPow2s : bigint[,][] = Array.init size (fun _ -> Array2D.zeroCreate<bigint> 2 2)
         matricsPow2s.[0] <- array2D [[1I; 1I]; [1I; 0I]]
+
         let mutable i = 1
         while 1 <<< i <= absNumber do
             matricsPow2s.[i] <- matrixMul matricsPow2s.[i - 1] matricsPow2s.[i - 1]
@@ -52,7 +52,6 @@ module Fibonacci =
             n <- n >>> 1
 
         resultMatrix.[0, 1] * if number < 0 && absNumber % 2 = 1 then -1I else 1I
-
 
 module Factorial =
     let countMedium number =
