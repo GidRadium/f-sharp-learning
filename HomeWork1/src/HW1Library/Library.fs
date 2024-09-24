@@ -34,8 +34,24 @@ module Fibonacci =
 
 module Factorial =
     let count (number: int): bigint =
+        // TODO if number <= 0
         let mutable result = 1I
         for i in 1 .. number do
             result <- result * bigint i
         result
 
+module Sort =
+    let bubble (array: int[]) = // TODO support more types
+        let mutable sorted = false
+        while not sorted do
+            sorted <- true
+            for i in 0 .. (array.Length - 2) do
+                if array.[i] > array.[i + 1] then
+                    let temp = array.[i]
+                    array.[i] <- array.[i + 1]
+                    array.[i + 1] <- temp
+                    sorted <- false
+        array
+
+    let quick (array: int[]) =
+        array // TODO
